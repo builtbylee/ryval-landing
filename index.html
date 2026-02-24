@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryval — Your Biggest Competition Is You</title>
+  <meta name="description" content="Ryval is a workout app that lets you compete against yourself or challenge friends. Track your progress, beat your personal best, and become your own rival.">
+  <meta property="og:title" content="Ryval — Your Biggest Competition Is You">
+  <meta property="og:description" content="A workout app that lets you compete against yourself or challenge friends.">
+  <meta property="og:image" content="images/hero-runner.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="images/ryval-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="images/ryval-logo.png" alt="Ryval" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="privacy.html" class="nav-link">Privacy</a>
+        <a href="terms.html" class="nav-link">Terms</a>
+        <a href="support.html" class="nav-link">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Rotating Slides -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="hero-slide active">
+        <img src="images/hero-runner.png" alt="">
+      </div>
+      <div class="hero-slide">
+        <img src="images/promo-deadlift.png" alt="">
+      </div>
+      <div class="hero-slide">
+        <img src="images/promo-boxing.png" alt="">
+      </div>
+      <div class="hero-slide">
+        <img src="images/promo-rowing.png" alt="">
+      </div>
+      <div class="hero-slide">
+        <img src="images/promo-gym.png" alt="">
+      </div>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Your Biggest<br>
+        Competition Is <span class="hero-accent">You</span>
+      </h1>
+      <p class="hero-subtitle">
+        Ryval turns every workout into a competition worth winning.
+      </p>
+      <a href="#coming-soon" class="hero-btn">
+        <span>Coming Soon</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+    <!-- Slide indicators -->
+    <div class="hero-indicators">
+      <button class="indicator active" data-slide="0"></button>
+      <button class="indicator" data-slide="1"></button>
+      <button class="indicator" data-slide="2"></button>
+      <button class="indicator" data-slide="3"></button>
+      <button class="indicator" data-slide="4"></button>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Why Ryval</span>
+        <h2 class="section-title">Built for people who<br>compete with themselves</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3 class="feature-title">Track Every Rep</h3>
+          <p class="feature-desc">Log your workouts with precision. Every set, every rep, every personal record — captured and organized.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="feature-title">Challenge Friends</h3>
+          <p class="feature-desc">Turn workouts into head-to-head matchups. Push each other to new limits with real-time challenges.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+          </div>
+          <h3 class="feature-title">Beat Your Best</h3>
+          <p class="feature-desc">See your ghost — your past performance. Every workout is a chance to outdo who you were yesterday.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="coming-soon">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-content">
+        <img src="images/ryval-logo.png" alt="Ryval" class="cta-logo">
+        <h2 class="cta-title">Coming Soon</h2>
+        <p class="cta-subtitle">Ryval is launching on iOS and Android.<br>Your next rival is already waiting — it's you.</p>
+        <div class="cta-stores">
+          <div class="store-badge disabled">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div>
+              <span class="store-soon">Coming soon on</span>
+              <span class="store-name">App Store</span>
+            </div>
+          </div>
+          <div class="store-badge disabled">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.61 1.814L13.793 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .61-.92zm.96-.574l11.2 6.468L12.8 10.68 4.57 1.24zM22 12c0 .54-.27 1.023-.69 1.307l-3.4 1.963-3.2-3.27 3.2-3.27 3.4 1.963C21.73 10.977 22 11.46 22 12zM4.57 22.76l8.23-9.44 2.97 2.972L4.57 22.76z"/></svg>
+            <div>
+              <span class="store-soon">Coming soon on</span>
+              <span class="store-name">Google Play</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="images/ryval-logo.png" alt="Ryval" class="footer-logo">
+          <p class="footer-tagline">Your biggest competition is you.</p>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Ryval. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
