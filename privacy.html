@@ -19,6 +19,7 @@
         <img src="images/ryval-logo.png" alt="Ryval" class="nav-logo-img">
       </a>
       <div class="nav-links">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
         <a href="privacy.html" class="nav-link">Privacy</a>
         <a href="terms.html" class="nav-link">Terms</a>
         <a href="support.html" class="nav-link">Support</a>
@@ -29,7 +30,7 @@
   <main class="legal-page">
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p class="legal-date">Effective date: February 16, 2026</p>
+      <p class="legal-date">Effective date: March 5, 2026</p>
 
       <p>Ryval ("the App") is a personal fitness tracking application. This policy explains what data the App collects, how it is stored, and your choices regarding that data.</p>
 
@@ -37,42 +38,57 @@
 
       <h3>Data You Provide</h3>
       <ul>
-        <li>Profile information: name, body weight, height, birth year, and sex (used for calorie calculations and workout personalization).</li>
+        <li>Profile information: name, body weight, height, birth year, and sex (used for calorie calculations, fitness score personalization, and workout recommendations).</li>
         <li>Workout data: exercises, sets, reps, weights, duration, and session notes.</li>
         <li>Weekly goals: calorie targets, active minutes targets, and workout frequency targets.</li>
+        <li>Profile photo: if you add a profile photo, it is stored locally on your device and, if you sign in, uploaded to Firebase Cloud Storage for display to accepted friends.</li>
       </ul>
 
       <h3>Data Collected Automatically</h3>
       <ul>
-        <li>Heart rate data: if you connect a Bluetooth heart rate monitor (e.g., Polar H10), the App records real-time heart rate, RR intervals, and energy expenditure during workouts. This data is stored locally on your device.</li>
+        <li>Heart rate data: if you connect a Bluetooth heart rate monitor (e.g., Polar, Wahoo, Garmin, Coospo), the App records real-time heart rate and energy expenditure during workouts. This data is stored locally on your device.</li>
         <li>Body composition data: if you connect to Android Health Connect, the App reads weight, body fat percentage, height, lean body mass, and bone mass from Health Connect. This data is stored locally on your device.</li>
+        <li>GPS and location data: if you enable GPS tracking for outdoor workouts (e.g., running, cycling), the App records location coordinates, distance, and pace during the workout session. GPS data is stored locally on your device and is not transmitted to any external server. Location access is only used during active workout sessions with GPS enabled.</li>
       </ul>
 
       <h3>Data From Third-Party Services</h3>
       <ul>
         <li>Firebase Authentication: the App uses Firebase for anonymous sign-in and email magic link authentication. Firebase processes your email address (if you sign in with email) and assigns an anonymous user identifier.</li>
+        <li>Firebase Cloud Storage: if you sign in and add a profile photo, the image is uploaded to Firebase Cloud Storage. Access is restricted to you and your accepted friends via security rules.</li>
+        <li>Firebase Cloud Firestore: if you use social features (friend codes, friend requests, workout sharing, challenges), social relationship data and shared workout metadata are stored in Firestore. Only accepted friends can view your shared data.</li>
+        <li>Firebase Remote Config: the App uses Firebase Remote Config to manage feature availability. No personal data is sent to Remote Config; the App receives configuration flags only.</li>
         <li>OneSignal Push Notifications: if you opt in to push notifications, OneSignal receives a device identifier to deliver notifications. No personal data is shared with OneSignal beyond what is necessary to deliver push messages.</li>
       </ul>
 
       <h2>How Data Is Stored</h2>
 
       <h3>Local Storage</h3>
-      <p>The majority of your data — workouts, heart rate logs, body composition records, goals, and preferences — is stored locally on your device in an SQLite database. This data does not leave your device unless you explicitly export it.</p>
+      <p>The majority of your data — workouts, heart rate logs, GPS tracks, body composition records, fitness scores, goals, and preferences — is stored locally on your device in an SQLite database. This data does not leave your device unless you explicitly export it or share workouts with friends.</p>
 
       <h3>Cloud Services</h3>
       <ul>
-        <li>Firebase: stores your anonymous user ID, friend codes, and friend list for the social features. If you sign in with email, Firebase stores your email address.</li>
+        <li>Firebase: stores your anonymous user ID, friend codes, friend list, and shared workout metadata for social features. If you sign in with email, Firebase stores your email address. If you add a profile photo, it is stored in Firebase Cloud Storage.</li>
         <li>OneSignal: stores a push notification device token if you opt in to notifications.</li>
       </ul>
-      <p>The App does not upload your workout data, heart rate data, or body composition data to any cloud server.</p>
+      <p>The App does not upload your full workout data, heart rate data, GPS tracks, or body composition data to any cloud server. Social features share only workout summary metadata (workout name, date, duration, calories) with accepted friends — not raw heart rate or GPS data.</p>
 
       <h2>Bluetooth and Sensor Data</h2>
       <p>When you connect a Bluetooth heart rate monitor:</p>
       <ul>
         <li>The App uses Bluetooth Low Energy (BLE) to communicate with the device.</li>
-        <li>Heart rate, RR intervals, battery level, and energy expenditure are read from the sensor.</li>
+        <li>Heart rate, battery level, and energy expenditure are read from the sensor.</li>
+        <li>During workouts, an Android foreground service may maintain the BLE connection in the background to ensure continuous heart rate capture. This service runs only during active workouts and stops when the workout ends.</li>
         <li>All sensor data is stored locally on your device and is not transmitted to any external server.</li>
         <li>You can disconnect the sensor at any time from Settings.</li>
+      </ul>
+
+      <h2>GPS and Location Data</h2>
+      <p>When you enable GPS tracking for an outdoor workout:</p>
+      <ul>
+        <li>The App requests location permission to record your route during the workout.</li>
+        <li>GPS coordinates, distance, and pace are captured and stored locally on your device.</li>
+        <li>Location data is used only for workout distance and pace calculations — it is not transmitted to any external server or shared with third parties.</li>
+        <li>GPS tracking is optional and only active during workouts where you explicitly enable it.</li>
       </ul>
 
       <h2>Health Connect Integration</h2>
@@ -84,16 +100,21 @@
         <li>You can revoke Health Connect permissions at any time from Android Settings or from the App's Settings screen.</li>
       </ul>
 
+      <h2>Fitness Score and Personalization</h2>
+      <p>The App calculates a Fitness Score (0-1000) based on your workout activity. The score uses your profile information (birth year, sex, weekly training frequency) to personalize targets and thresholds. This calculation happens entirely on your device — no personal data is sent to any server for scoring purposes.</p>
+
       <h2>Data Export and Deletion</h2>
       <ul>
         <li><strong>Export your data:</strong> use Settings &gt; Data &gt; Download My Data to export a full backup of your local database as a JSON file.</li>
         <li><strong>Automatic backups:</strong> you can configure automatic backups (daily, weekly, or after each workout) that save to a folder you choose on your device.</li>
-        <li><strong>Delete your data:</strong> uninstalling the App removes all locally stored data. To delete cloud data (Firebase account and friend list), you can sign out and delete your account from Settings.</li>
+        <li><strong>Delete your data:</strong> uninstalling the App removes all locally stored data.</li>
+        <li><strong>Delete your account:</strong> to delete your cloud data (Firebase account, friend list, profile photo, and shared workout data), go to Settings &gt; Account &gt; Delete Account. You can also request account deletion by contacting <a href="mailto:support@ryvalapp.com">support@ryvalapp.com</a>.</li>
       </ul>
 
       <h2>Data Sharing</h2>
-      <p>We do not sell, rent, or share your personal data with third parties for advertising or marketing purposes.</p>
-      <p>Data is shared with third-party services only as described above (Firebase for authentication, OneSignal for push notifications) and only to the extent necessary to provide those features.</p>
+      <p>We do not sell, rent, or share your personal data with third parties for advertising or marketing purposes. The App does not display advertisements.</p>
+      <p>Data is shared with third-party services only as described above (Firebase for authentication and social features, OneSignal for push notifications) and only to the extent necessary to provide those features.</p>
+      <p>If you use social features, workout summary information (workout name, date, duration, calories) may be visible to your accepted friends within the App.</p>
 
       <h2>Children's Privacy</h2>
       <p>The App is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
