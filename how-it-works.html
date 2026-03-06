@@ -1,523 +1,1222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How It Works — Ryval</title>
-  <meta name="description" content="Learn how Ryval's Fitness Score, You vs You competition, heart rate tracking, and workout features work.">
-  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="legal.css">
-  <style>
-    .hiw-hero {
-      padding: 140px 0 60px;
-      text-align: center;
-    }
-    .hiw-hero h1 {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-    .hiw-hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .hiw-section {
-      padding: 80px 0;
-      border-top: 1px solid var(--border);
-    }
-    .hiw-section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-    .hiw-section h2 {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-    .hiw-section > .container > p {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      max-width: 640px;
-      margin-bottom: 48px;
-    }
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .score-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-    }
-    .score-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .score-card-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .score-card-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .score-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-    }
-    .score-card-pts {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .score-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .tier-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-    .tier-badge {
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-    }
-    .tier-badge span {
-      font-weight: 400;
-      color: var(--text-muted);
-      margin-left: 6px;
-    }
-    .coverage-groups {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 8px;
-      margin: 24px 0;
-    }
-    .coverage-group {
-      padding: 12px 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: center;
-    }
-    .yvs-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .yvs-step {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-    }
-    .yvs-step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--border-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .yvs-step h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .yvs-step p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .feature-detail-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .feature-detail-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-    }
-    .feature-detail-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .feature-detail-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 8px;
-    }
-    .feature-detail-card ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-    .feature-detail-card li {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 4px;
-    }
-    .personalization-note {
-      margin-top: 32px;
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-    .personalization-note h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .personalization-note p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 4px;
-    }
-    @media (max-width: 768px) {
-      .hiw-hero { padding: 110px 0 40px; }
-      .hiw-hero h1 { font-size: 32px; }
-      .hiw-section { padding: 60px 0; }
-      .hiw-section h2 { font-size: 24px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Ryval</title>
+<meta name="description" content="Learn how Ryval's Fitness Score, You vs You competition, heart rate tracking, and workout features work.">
+<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --bg: #09090b;
+  --bg-elevated: #111113;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(255,255,255,0.12);
+  --text-primary: #fafafa;
+  --text-secondary: rgba(255,255,255,0.55);
+  --text-muted: rgba(255,255,255,0.30);
+  --accent: #3b82f6;
+  --accent-dim: rgba(59,130,246,0.10);
+  --accent-glow: rgba(59,130,246,0.06);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 24px;
+  background: rgba(9,9,11,0.8);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo-img { height: 28px; width: auto; opacity: 0.9; }
+.nav-links { display: flex; gap: 28px; }
+.nav-link {
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--text-primary); }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.40s; }
+.reveal.d6 { transition-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ===== HERO ===== */
+.hero-section {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  top: 20%; left: 50%; transform: translateX(-50%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 96px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--text-primary);
+}
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--text-muted), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: clamp(80px, 12vh, 140px) 0;
+  position: relative;
+}
+.section + .section { border-top: 1px solid var(--border); }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.section-desc {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-secondary);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: clamp(40px, 6vh, 64px);
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  transition: border-color 0.3s, background 0.3s;
+}
+.glass-card:hover {
+  border-color: var(--border-bright);
+  background: var(--surface-hover);
+}
+
+/* ===== SCORE COMPONENT CARDS ===== */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.score-card-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 16px;
+}
+.score-icon {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.score-icon svg { width: 20px; height: 20px; }
+.score-name { font-size: 17px; font-weight: 600; }
+.score-pts {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.score-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Score bar */
+.score-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+.score-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* ===== TIER BADGES ===== */
+.tier-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 48px;
+}
+.tier-badge {
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+}
+.tier-badge span {
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* ===== COVERAGE SECTION ===== */
+.sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.sub-card-title {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 4px;
+}
+.sub-card-pts {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.sub-card-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  margin: 32px 0 12px;
+}
+.group-chip {
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px; font-weight: 500;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+.groups-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.personalization-card {
+  margin-top: 40px;
+}
+.personalization-card h4 {
+  font-size: 15px; font-weight: 600;
+  margin-bottom: 12px;
+}
+.personalization-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+.personalization-card strong { color: var(--text-primary); font-weight: 600; }
+
+/* ===== YOU VS YOU STEPS ===== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.step-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.step-title {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 10px;
+}
+.step-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== FEATURE DETAIL CARDS ===== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.feature-card-title {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 10px;
+}
+.feature-card-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.feature-card-list {
+  padding-left: 18px; margin: 8px 0 0;
+}
+.feature-card-list li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+/* ===== DATA PRIVACY SECTION ===== */
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* ===== DIVIDER LINE ===== */
+.section-divider {
+  padding: clamp(60px, 10vh, 120px) 0;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.divider-num {
+  font-family: var(--font-display);
+  font-size: clamp(120px, 22vw, 240px);
+  font-weight: 900;
+  line-height: 0.85;
+  opacity: 0.03;
+  position: absolute;
+  pointer-events: none;
+  color: var(--text-primary);
+}
+.divider-content { position: relative; z-index: 1; }
+.divider-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+.divider-sub {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-logo { height: 20px; width: auto; margin: 0 auto 12px; opacity: 0.3; }
+.footer-text { font-size: 13px; color: var(--text-muted); }
+
+/* ===== SPLIT LAYOUT ===== */
+.section-split {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  margin-bottom: clamp(40px, 6vh, 64px);
+}
+.section-split.reverse { grid-template-columns: auto 1fr; }
+.section-split .section-desc { margin-bottom: 0; }
+
+/* ===== PHONE MOCKUP ===== */
+.phone { width: 260px; flex-shrink: 0; }
+.phone-frame {
+  background: #1a1a1e;
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.12);
+}
+.phone-screen {
+  background: #111113;
+  border-radius: 36px;
+  overflow: hidden;
+  padding-bottom: 16px;
+}
+.phone-island {
+  width: 90px; height: 26px;
+  background: #0a0a0a; border-radius: 20px;
+  margin: 8px auto 0;
+}
+.ph-status {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 22px 0;
+  font-size: 11px; font-weight: 600; color: #fff;
+}
+.ph-card {
+  background: #1a1a1c;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  margin: 0 10px 8px;
+  overflow: hidden;
+}
+.ph-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.ph-row:last-child { border-bottom: none; }
+.ph-bar-track {
+  flex: 1; height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px; margin: 0 8px;
+  overflow: hidden;
+}
+.ph-bar-fill { height: 100%; background: #fff; border-radius: 2px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links { gap: 16px; }
+  .nav-link { font-size: 12px; }
+  .score-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .privacy-grid { grid-template-columns: 1fr; }
+  .sub-grid { grid-template-columns: 1fr; }
+  .groups-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+  .hero-section { padding: 120px 24px 80px; }
+  .section-split, .section-split.reverse { grid-template-columns: 1fr; }
+  .phone { width: 220px; margin: 0 auto; order: -1; }
+}
+
+@media (max-width: 480px) {
+  .nav-links { gap: 12px; }
+  .nav-link { font-size: 11px; }
+  .tier-row { gap: 6px; }
+  .tier-badge { padding: 8px 14px; font-size: 12px; }
+}
+</style>
 </head>
 <body>
 
-  <nav class="nav scrolled" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="images/ryval-logo.png" alt="Ryval" class="nav-logo-img">
-      </a>
-      <div class="nav-links">
-        <a href="how-it-works.html" class="nav-link">How It Works</a>
-        <a href="privacy.html" class="nav-link">Privacy</a>
-        <a href="terms.html" class="nav-link">Terms</a>
-        <a href="support.html" class="nav-link">Support</a>
-      </div>
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/ryval-logo.png" alt="Ryval" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="how-it-works.html" class="nav-link">How It Works</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
+      <a href="terms.html" class="nav-link">Terms</a>
+      <a href="support.html" class="nav-link">Support</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main>
-    <!-- Hero -->
-    <section class="hiw-hero">
-      <div class="container">
-        <h1>How Ryval Works</h1>
-        <p>Everything you need to know about tracking workouts, competing against yourself, and building a better training habit.</p>
+<!-- Hero -->
+<section class="hero-section">
+  <div>
+    <p class="hero-label reveal">Inside the App</p>
+    <h1 class="hero-title reveal d1">How <em>Ryval</em> Works</h1>
+    <p class="hero-subtitle reveal d2">Everything you need to know about tracking workouts, competing against yourself, and building a better training habit.</p>
+  </div>
+  <div class="hero-scroll"></div>
+</section>
+
+<!-- ============================== -->
+<!-- SECTION 1: FITNESS SCORE       -->
+<!-- ============================== -->
+<section class="section" id="fitness-score">
+  <div class="container">
+    <div class="section-split">
+      <div>
+        <p class="section-label reveal">Core Feature</p>
+        <h2 class="section-title reveal d1">Fitness Score</h2>
+        <p class="section-desc reveal d2">A single number from 0 to 1,000 that reflects your weekly training quality. It updates in real time as you work out and resets each week&mdash;so you always have a fresh target.</p>
       </div>
-    </section>
-
-    <!-- Fitness Score -->
-    <section class="hiw-section" id="fitness-score">
-      <div class="container">
-        <p class="hiw-section-label">Core Feature</p>
-        <h2>Fitness Score</h2>
-        <p>Your Fitness Score is a single number (0-1000) that reflects your overall weekly training quality. It updates in real time as you work out and resets each week so you always have a fresh target to hit.</p>
-
-        <div class="score-grid">
-          <div class="score-card">
-            <div class="score-card-header">
-              <div class="score-card-icon" style="background: #2563eb;">
-                <svg viewBox="0 0 24 24"><path d="M6.5 6.5h11M4 12h16M6.5 17.5h11" stroke-width="2.5"/></svg>
+      <div class="phone reveal d3">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ph-status"><span>9:41</span><span style="opacity:0.6;font-size:10px;">••••</span></div>
+            <!-- Greeting -->
+            <div style="padding:8px 16px 4px;">
+              <div style="font-size:9px;color:#666;">Good evening,</div>
+              <div style="font-size:18px;font-weight:700;color:#fff;">Lee</div>
+            </div>
+            <!-- Score Card -->
+            <div class="ph-card">
+              <div style="padding:12px 12px 8px;text-align:center;">
+                <!-- Gauge SVG -->
+                <svg viewBox="0 10 200 95" style="width:100%;max-width:200px;margin:0 auto;display:block;">
+                  <defs>
+                    <linearGradient id="g-grad" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#d97706"/>
+                      <stop offset="100%" stop-color="#fbbf24"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 24 100 A 76 76 0 0 1 176 100" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M 24 100 A 76 76 0 0 1 136 29" fill="none" stroke="url(#g-grad)" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="136" cy="29" r="3.5" fill="#fbbf24"/>
+                  <text x="100" y="80" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="42" font-weight="200" letter-spacing="-2">647</text>
+                  <text x="100" y="97" text-anchor="middle" fill="#22c55e" font-family="Inter" font-size="8" font-weight="500">▲ 38 vs last week</text>
+                </svg>
               </div>
-              <div>
-                <h3>Volume</h3>
-                <span class="score-card-pts">up to 250 pts</span>
+              <div style="height:1px;background:rgba(255,255,255,0.06);"></div>
+              <!-- Breakdown Bars -->
+              <div style="padding:6px 10px;">
+                <div class="ph-row" style="padding:6px 0;">
+                  <span style="font-size:9px;color:#fff;width:64px;">Volume</span>
+                  <div class="ph-bar-track"><div class="ph-bar-fill" style="width:75%;"></div></div>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.5);min-width:40px;text-align:right;">187/250</span>
+                </div>
+                <div class="ph-row" style="padding:6px 0;">
+                  <span style="font-size:9px;color:#fff;width:64px;">Activity</span>
+                  <div class="ph-bar-track"><div class="ph-bar-fill" style="width:72%;"></div></div>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.5);min-width:40px;text-align:right;">145/200</span>
+                </div>
+                <div class="ph-row" style="padding:6px 0;">
+                  <span style="font-size:9px;color:#fff;width:64px;">Consistency</span>
+                  <div class="ph-bar-track"><div class="ph-bar-fill" style="width:84%;"></div></div>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.5);min-width:40px;text-align:right;">168/200</span>
+                </div>
+                <div class="ph-row" style="padding:6px 0;">
+                  <span style="font-size:9px;color:#fff;width:64px;">Coverage</span>
+                  <div class="ph-bar-track"><div class="ph-bar-fill" style="width:65%;"></div></div>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.5);min-width:40px;text-align:right;">98/150</span>
+                </div>
+                <div class="ph-row" style="padding:6px 0;border-bottom:none;">
+                  <span style="font-size:9px;color:#fff;width:64px;">Competition</span>
+                  <div class="ph-bar-track"><div class="ph-bar-fill" style="width:25%;"></div></div>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.5);min-width:40px;text-align:right;">49/200</span>
+                </div>
               </div>
             </div>
-            <p>Total training load from your strength sessions — sets, reps, and weight lifted. Heavier and higher-volume workouts earn more points.</p>
           </div>
-
-          <div class="score-card">
-            <div class="score-card-header">
-              <div class="score-card-icon" style="background: #dc2626;">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6 2 12s4.48 10 10 10 10-4 10-10S17.52 2 12 2z" fill="#dc2626" stroke="none"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#fff"/><circle cx="9" cy="9" r="1" fill="#fff" stroke="none"/><circle cx="15" cy="9" r="1" fill="#fff" stroke="none"/></svg>
-              </div>
-              <div>
-                <h3>Activity</h3>
-                <span class="score-card-pts">up to 200 pts</span>
-              </div>
-            </div>
-            <p>A blend of active minutes and calories burned throughout the week. Rewards both duration and workout intensity.</p>
-          </div>
-
-          <div class="score-card">
-            <div class="score-card-header">
-              <div class="score-card-icon" style="background: #16a34a;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>
-              </div>
-              <div>
-                <h3>Consistency</h3>
-                <span class="score-card-pts">up to 200 pts</span>
-              </div>
-            </div>
-            <p>How regularly you show up. Every day with at least 15 minutes of training counts toward your consistency target.</p>
-          </div>
-
-          <div class="score-card">
-            <div class="score-card-header">
-              <div class="score-card-icon" style="background: #7c3aed;">
-                <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-              </div>
-              <div>
-                <h3>Coverage</h3>
-                <span class="score-card-pts">up to 150 pts</span>
-              </div>
-            </div>
-            <p>Rewards well-rounded training. Earn points for hitting all major muscle groups, training body parts more than once, and keeping up with cardio.</p>
-          </div>
-
-          <div class="score-card">
-            <div class="score-card-header">
-              <div class="score-card-icon" style="background: #eab308;">
-                <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"/></svg>
-              </div>
-              <div>
-                <h3>Competition</h3>
-                <span class="score-card-pts">up to 200 pts</span>
-              </div>
-            </div>
-            <p>Win rate from You vs You challenges. Beat your past self to earn points. If you don't use competitions, these points are redistributed across the other four components.</p>
-          </div>
-        </div>
-
-        <div class="tier-row">
-          <div class="tier-badge" style="color: #ef4444;">Beginner <span>0-199</span></div>
-          <div class="tier-badge" style="color: #f97316;">Active <span>200-399</span></div>
-          <div class="tier-badge" style="color: #eab308;">Fit <span>400-599</span></div>
-          <div class="tier-badge" style="color: #22c55e;">Strong <span>600-799</span></div>
-          <div class="tier-badge" style="color: #3b82f6;">Elite <span>800+</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coverage Deep Dive -->
-    <section class="hiw-section" id="coverage">
-      <div class="container">
-        <p class="hiw-section-label">Scoring Detail</p>
-        <h2>Coverage Scoring</h2>
-        <p>Coverage rewards you for training a variety of body parts rather than repeating the same muscles every session. It has three sub-components:</p>
-
-        <div class="score-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-          <div class="score-card">
-            <h3>Group Coverage</h3>
-            <span class="score-card-pts">up to 70 pts</span>
-            <p style="margin-top: 8px;">Train as many of the 7 major muscle groups as possible each week. The more groups you hit, the more points you earn.</p>
-          </div>
-          <div class="score-card">
-            <h3>Double Hit</h3>
-            <span class="score-card-pts">up to 50 pts</span>
-            <p style="margin-top: 8px;">Train muscle groups on two or more separate days. Hitting a body part twice in a week shows serious commitment.</p>
-          </div>
-          <div class="score-card">
-            <h3>Cardio Sessions</h3>
-            <span class="score-card-pts">up to 30 pts</span>
-            <p style="margin-top: 8px;">Regular cardio sessions throughout the week. Running, cycling, rowing, or any cardio activity counts.</p>
-          </div>
-        </div>
-
-        <h3 style="font-size: 16px; font-weight: 700; margin-top: 40px; margin-bottom: 16px;">The 7 Muscle Groups</h3>
-        <div class="coverage-groups">
-          <div class="coverage-group">Chest</div>
-          <div class="coverage-group">Back</div>
-          <div class="coverage-group">Shoulders</div>
-          <div class="coverage-group">Arms</div>
-          <div class="coverage-group">Quads</div>
-          <div class="coverage-group">Posterior Chain</div>
-          <div class="coverage-group">Core</div>
-        </div>
-        <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px;">Arms includes both biceps and triceps. Posterior chain includes hamstrings and glutes. Full-body exercises count toward all groups.</p>
-
-        <div class="personalization-note">
-          <h3>Personalized to You</h3>
-          <p>Coverage targets adjust based on your profile:</p>
-          <p><strong>Training frequency</strong> — if you train 2 days/week, you need to hit fewer groups than someone training 5+ days.</p>
-          <p><strong>Age</strong> — targets are slightly reduced for users over 50 to reflect realistic training volume.</p>
-          <p><strong>Sex</strong> — female users get a slight shift toward cardio weighting in the sub-component balance.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- You vs You -->
-    <section class="hiw-section" id="you-vs-you">
-      <div class="container">
-        <p class="hiw-section-label">Core Feature</p>
-        <h2>You vs You</h2>
-        <p>Compete against your own past performance. Every workout creates a ghost — a record of what you did last time — and your next session becomes a race to beat it.</p>
-
-        <div class="yvs-steps">
-          <div class="yvs-step">
-            <div class="yvs-step-num">1</div>
-            <h3>Pick Your Opponent</h3>
-            <p>Before starting, choose who to compete against: your last session, your personal best, or the average of your last 5. You can also pick any past workout.</p>
-          </div>
-          <div class="yvs-step">
-            <div class="yvs-step-num">2</div>
-            <h3>See the Ghost</h3>
-            <p>During your workout, a ghost line shows your opponent's heart rate alongside yours in real time. Track your calorie pace, intensity, and volume against the ghost.</p>
-          </div>
-          <div class="yvs-step">
-            <div class="yvs-step-num">3</div>
-            <h3>Compete Live</h3>
-            <p>Real-time comparison badges show whether you're ahead or behind. For strength workouts, it's about volume and sets. For cardio, it's calories and intensity.</p>
-          </div>
-          <div class="yvs-step">
-            <div class="yvs-step-num">4</div>
-            <h3>Get Your Scorecard</h3>
-            <p>After finishing, a detailed scorecard shows exactly how you compared — with percentage improvements across every metric. Wins count toward your Fitness Score.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Heart Rate Monitoring -->
-    <section class="hiw-section" id="heart-rate">
-      <div class="container">
-        <p class="hiw-section-label">Hardware Integration</p>
-        <h2>Heart Rate Monitoring</h2>
-        <p>Connect any standard Bluetooth heart rate monitor for real-time tracking during workouts. Your heart rate data powers calorie calculations, intensity scoring, and the You vs You ghost comparison.</p>
-
-        <div class="feature-detail-grid">
-          <div class="feature-detail-card">
-            <h3>Any BLE Monitor</h3>
-            <p>Ryval works with any Bluetooth heart rate monitor that broadcasts the standard Heart Rate Service — Polar, Wahoo, Garmin, Coospo, and more. No brand lock-in.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Background Capture</h3>
-            <p>Heart rate continues recording when you lock your phone or switch apps. An Android foreground service maintains the BLE connection so you never miss a beat.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Live HR Chart</h3>
-            <p>A real-time heart rate chart scrolls during your workout, showing your current BPM alongside your ghost's heart rate for visual comparison.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Accurate Calories</h3>
-            <p>When a heart rate monitor is connected, calories are calculated using the Keytel (2005) formula — a research-backed method that factors in your heart rate, age, sex, and weight for more accurate results than generic estimates.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Workout Tracking -->
-    <section class="hiw-section" id="workouts">
-      <div class="container">
-        <p class="hiw-section-label">Core Feature</p>
-        <h2>Workout Tracking</h2>
-        <p>Create custom workouts, log every set in real time, and track cardio sessions with distance, pace, and calories. Everything stays organized and builds toward your weekly goals.</p>
-
-        <div class="feature-detail-grid">
-          <div class="feature-detail-card">
-            <h3>Custom Workouts</h3>
-            <p>Build workouts from a library of 200+ exercises across strength, cardio, and mixed categories. Set target sets, reps, and weights for each exercise.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Live Set Logging</h3>
-            <p>One-tap set tracking: hit Start Set, perform your reps, hit End Set. Adjust reps and weight inline with +/- controls. Rest time is auto-calculated between sets.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Cardio Tracking</h3>
-            <p>Log cardio activities with duration, distance, and calories. GPS tracking available for outdoor activities like running and cycling.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Progress Analytics</h3>
-            <ul>
-              <li>Muscle heatmap showing volume distribution and recovery</li>
-              <li>Body composition charts (via Health Connect)</li>
-              <li>Weekly trends for calories, active minutes, and workouts</li>
-              <li>Fitness Score history chart showing weekly progression</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Data & Privacy -->
-    <section class="hiw-section" id="data">
-      <div class="container">
-        <p class="hiw-section-label">Your Data</p>
-        <h2>Privacy First</h2>
-        <p>Your workout data lives on your device. We don't sell data, show ads, or upload your training history to any server.</p>
-
-        <div class="feature-detail-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-          <div class="feature-detail-card">
-            <h3>Local Storage</h3>
-            <p>Workouts, heart rate, GPS tracks, scores, and body composition data are stored in an on-device SQLite database. Nothing leaves your phone unless you choose to share or export it.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Backup & Restore</h3>
-            <p>Manual and automatic backups save your entire database as a JSON file. Restore from any backup to recover your data on a new device.</p>
-          </div>
-          <div class="feature-detail-card">
-            <h3>Optional Social</h3>
-            <p>Social features are opt-in. Sign in with a magic link to add friends, share workouts, and challenge each other. Only workout summaries are shared — never raw heart rate or GPS data.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <img src="images/ryval-logo.png" alt="Ryval" class="footer-logo">
-          <p class="footer-tagline">Your biggest competition is you.</p>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Ryval. All rights reserved.</p>
         </div>
       </div>
     </div>
-  </footer>
+
+    <div class="score-grid">
+      <!-- Volume -->
+      <div class="glass-card reveal">
+        <div class="score-card-header">
+          <div class="score-icon" style="background: rgba(59,130,246,0.12);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5h11M4 12h16M6.5 17.5h11"/></svg>
+          </div>
+          <div>
+            <div class="score-name">Volume</div>
+            <div class="score-pts">up to 250 pts</div>
+          </div>
+        </div>
+        <p class="score-desc">Total training load from strength sessions&mdash;sets, reps, and weight lifted. Heavier and higher-volume workouts earn more.</p>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width: 25%;"></div></div>
+      </div>
+
+      <!-- Activity -->
+      <div class="glass-card reveal d1">
+        <div class="score-card-header">
+          <div class="score-icon" style="background: rgba(59,130,246,0.12);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <div class="score-name">Activity</div>
+            <div class="score-pts">up to 200 pts</div>
+          </div>
+        </div>
+        <p class="score-desc">A blend of active minutes and calories burned. Rewards both duration and workout intensity throughout the week.</p>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div>
+      </div>
+
+      <!-- Consistency -->
+      <div class="glass-card reveal d2">
+        <div class="score-card-header">
+          <div class="score-icon" style="background: rgba(59,130,246,0.12);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="score-name">Consistency</div>
+            <div class="score-pts">up to 200 pts</div>
+          </div>
+        </div>
+        <p class="score-desc">How regularly you show up. Every day with at least 15 minutes of training counts toward your consistency target.</p>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div>
+      </div>
+
+      <!-- Coverage -->
+      <div class="glass-card reveal d3">
+        <div class="score-card-header">
+          <div class="score-icon" style="background: rgba(59,130,246,0.12);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="score-name">Coverage</div>
+            <div class="score-pts">up to 150 pts</div>
+          </div>
+        </div>
+        <p class="score-desc">Rewards well-rounded training. Hit all major muscle groups, train body parts more than once, and maintain regular cardio.</p>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width: 15%;"></div></div>
+      </div>
+
+      <!-- Competition -->
+      <div class="glass-card reveal d4">
+        <div class="score-card-header">
+          <div class="score-icon" style="background: rgba(59,130,246,0.12);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"/></svg>
+          </div>
+          <div>
+            <div class="score-name">Competition</div>
+            <div class="score-pts">up to 200 pts</div>
+          </div>
+        </div>
+        <p class="score-desc">Your win rate from You&nbsp;vs&nbsp;You challenges. Beat your past self to earn points. If you don't compete, these points redistribute across the other four.</p>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div>
+      </div>
+    </div>
+
+    <!-- Tier Badges -->
+    <div class="tier-row reveal">
+      <div class="tier-badge" style="color: #ef4444;">Beginner<span>0&ndash;199</span></div>
+      <div class="tier-badge" style="color: #f97316;">Active<span>200&ndash;399</span></div>
+      <div class="tier-badge" style="color: #eab308;">Fit<span>400&ndash;599</span></div>
+      <div class="tier-badge" style="color: #22c55e;">Strong<span>600&ndash;799</span></div>
+      <div class="tier-badge" style="color: #3b82f6;">Elite<span>800+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- DIVIDER                        -->
+<!-- ============================== -->
+<div class="section-divider">
+  <span class="divider-num">II</span>
+  <div class="divider-content reveal" style="text-align: center;">
+    <h3 class="divider-title">Coverage Scoring</h3>
+    <p class="divider-sub">Rewarding variety over repetition</p>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SECTION 2: COVERAGE            -->
+<!-- ============================== -->
+<section class="section" id="coverage" style="border-top: none;">
+  <div class="container">
+    <div class="section-split reverse">
+      <div class="phone reveal" style="width:280px;">
+        <div class="phone-frame">
+          <div class="phone-screen" style="padding-bottom:0;height:520px;">
+            <div class="phone-island"></div>
+            <img src="images/mockup-create-workout-detail.jpg" alt="Ryval Create Workout screen showing blue muscle map and exercise selection" style="width:100%;display:block;margin-top:-2px;">
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal">Scoring Detail</p>
+        <h2 class="section-title reveal d1">Train the Whole Body</h2>
+        <p class="section-desc reveal d2">Coverage rewards you for training a variety of body parts rather than repeating the same muscles every session. It has three sub-components.</p>
+      </div>
+    </div>
+
+    <div class="sub-grid">
+      <div class="glass-card reveal">
+        <div class="sub-card-title">Group Coverage</div>
+        <div class="sub-card-pts">UP TO 70 PTS</div>
+        <p class="sub-card-text">Train as many of the 7 major muscle groups as possible each week. More groups covered means more points earned.</p>
+      </div>
+      <div class="glass-card reveal d1">
+        <div class="sub-card-title">Double Hit</div>
+        <div class="sub-card-pts">UP TO 50 PTS</div>
+        <p class="sub-card-text">Train muscle groups on two or more separate days. Hitting a body part twice shows serious commitment to growth.</p>
+      </div>
+      <div class="glass-card reveal d2">
+        <div class="sub-card-title">Cardio Sessions</div>
+        <div class="sub-card-pts">UP TO 30 PTS</div>
+        <p class="sub-card-text">Regular cardio sessions throughout the week. Running, cycling, rowing, or any cardio activity counts toward this target.</p>
+      </div>
+    </div>
+
+    <!-- 7 Muscle Groups -->
+    <h4 style="font-size: 14px; font-weight: 600; margin-top: 48px; margin-bottom: 4px;" class="reveal">The 7 Muscle Groups</h4>
+    <div class="groups-grid reveal d1">
+      <div class="group-chip">Chest</div>
+      <div class="group-chip">Back</div>
+      <div class="group-chip">Shoulders</div>
+      <div class="group-chip">Arms</div>
+      <div class="group-chip">Quads</div>
+      <div class="group-chip">Posterior Chain</div>
+      <div class="group-chip">Core</div>
+    </div>
+    <p class="groups-note reveal d2">Arms includes biceps and triceps. Posterior chain includes hamstrings and glutes. Full-body exercises count toward all seven groups.</p>
+
+    <!-- Personalization -->
+    <div class="glass-card personalization-card reveal">
+      <h4>Personalized to You</h4>
+      <p><strong>Training frequency</strong> &mdash; if you train 2 days/week, you need to hit fewer groups than someone training 5+ days.</p>
+      <p><strong>Age</strong> &mdash; targets are slightly reduced for users over 50 to reflect realistic training volume.</p>
+      <p><strong>Sex</strong> &mdash; female users get a slight shift toward cardio weighting in the sub-component balance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- DIVIDER                        -->
+<!-- ============================== -->
+<div class="section-divider">
+  <span class="divider-num">III</span>
+  <div class="divider-content reveal" style="text-align: center;">
+    <h3 class="divider-title">You vs You</h3>
+    <p class="divider-sub">Your past self is your next opponent</p>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SECTION 3: YOU VS YOU          -->
+<!-- ============================== -->
+<section class="section" id="you-vs-you" style="border-top: none;">
+  <div class="container">
+    <div class="section-split">
+      <div>
+        <p class="section-label reveal">Core Feature</p>
+        <h2 class="section-title reveal d1">Compete Against Yourself</h2>
+        <p class="section-desc reveal d2">Every workout creates a ghost&mdash;a record of what you did last time. Your next session becomes a race to beat it.</p>
+      </div>
+      <div class="phone reveal d3">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ph-status"><span>9:41</span><span style="opacity:0.6;font-size:10px;">••••</span></div>
+            <!-- Workout header -->
+            <div style="padding:6px 16px 2px;">
+              <div style="font-size:13px;font-weight:700;color:#fff;">Upper Body Push</div>
+              <div style="font-size:28px;font-weight:200;color:#fff;letter-spacing:-1px;line-height:1.1;">23:45</div>
+            </div>
+            <!-- YvY Card -->
+            <div class="ph-card">
+              <div style="padding:8px 10px 4px;">
+                <div style="font-size:7px;font-weight:700;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">You vs You</div>
+                <!-- HR + Cal badges -->
+                <div style="display:flex;gap:6px;margin-bottom:6px;">
+                  <div style="flex:1;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:6px 8px;text-align:center;">
+                    <div style="font-size:7px;color:#ef4444;font-weight:600;">♥ BPM</div>
+                    <div style="font-size:18px;font-weight:700;color:#ef4444;line-height:1.2;">142</div>
+                    <div style="font-size:7px;color:rgba(239,68,68,0.6);">Cardio zone</div>
+                  </div>
+                  <div style="flex:1;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);border-radius:8px;padding:6px 8px;text-align:center;">
+                    <div style="font-size:7px;color:#f97316;font-weight:600;">🔥 CAL</div>
+                    <div style="font-size:18px;font-weight:700;color:#f97316;line-height:1.2;">312</div>
+                    <div style="font-size:7px;color:rgba(249,115,22,0.6);">6.2 cal/min</div>
+                  </div>
+                </div>
+                <!-- Ghost comparison -->
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px;">
+                  <span style="font-size:7px;color:#999;">👻 Ghost: 298 cal</span>
+                  <span style="font-size:7px;color:#22c55e;font-weight:600;">+14 ahead</span>
+                </div>
+              </div>
+              <!-- HR Chart -->
+              <div style="padding:0 4px 6px;">
+                <svg viewBox="0 0 220 72" style="width:100%;display:block;">
+                  <!-- Grid lines -->
+                  <line x1="0" y1="15" x2="220" y2="15" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 3"/>
+                  <line x1="0" y1="30" x2="220" y2="30" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 3"/>
+                  <line x1="0" y1="45" x2="220" y2="45" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 3"/>
+                  <!-- Ghost line (gray dashed) -->
+                  <polyline points="0,48 18,44 36,40 54,38 72,40 90,36 108,34 126,37 144,35 162,38 180,36 198,39 216,37" fill="none" stroke="#D4D4D4" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.4"/>
+                  <!-- User area fill -->
+                  <defs>
+                    <linearGradient id="hr-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <polygon points="0,52 18,45 36,36 54,28 72,24 90,30 108,18 126,25 144,20 162,16 180,22 198,18 216,20 216,60 0,60" fill="url(#hr-grad)"/>
+                  <!-- User line (red) -->
+                  <polyline points="0,52 18,45 36,36 54,28 72,24 90,30 108,18 126,25 144,20 162,16 180,22 198,18 216,20" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linejoin="round"/>
+                  <!-- Endpoint markers -->
+                  <circle cx="216" cy="20" r="3" fill="#ef4444" stroke="#0a0a0a" stroke-width="1.5"/>
+                  <circle cx="216" cy="37" r="2.5" fill="#D4D4D4" opacity="0.5"/>
+                  <!-- Time labels -->
+                  <text x="4" y="68" fill="rgba(255,255,255,0.25)" font-size="6" font-family="Inter">0:00</text>
+                  <text x="68" y="68" fill="rgba(255,255,255,0.25)" font-size="6" font-family="Inter">8:00</text>
+                  <text x="132" y="68" fill="rgba(255,255,255,0.25)" font-size="6" font-family="Inter">16:00</text>
+                  <text x="196" y="68" fill="rgba(255,255,255,0.25)" font-size="6" font-family="Inter">24:00</text>
+                </svg>
+              </div>
+            </div>
+            <!-- Current exercise -->
+            <div class="ph-card">
+              <div style="padding:8px 10px;">
+                <div style="font-size:10px;font-weight:600;color:#fff;">Bench Press</div>
+                <div style="font-size:8px;color:#555;margin-bottom:6px;">Set 3 of 4</div>
+                <div style="background:#22c55e;border-radius:8px;padding:6px 0;text-align:center;">
+                  <span style="font-size:10px;font-weight:700;color:#fff;">END SET</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+      <div class="glass-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Pick Your Opponent</div>
+        <p class="step-text">Before starting, choose who to compete against: your last session, your personal best, the average of your last 5, or any past workout.</p>
+      </div>
+      <div class="glass-card reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-title">See the Ghost</div>
+        <p class="step-text">During your workout, a ghost line shows your opponent's heart rate alongside yours. Track calorie pace, intensity, and volume against the ghost in real time.</p>
+      </div>
+      <div class="glass-card reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-title">Compete Live</div>
+        <p class="step-text">Real-time badges show whether you're ahead or behind. For strength: volume and sets. For cardio: calories and intensity. For mixed: a combined score.</p>
+      </div>
+      <div class="glass-card reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-title">Get Your Scorecard</div>
+        <p class="step-text">After finishing, a detailed scorecard shows how you compared&mdash;with percentage improvements across every metric. Wins count toward your Fitness Score.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- DIVIDER                        -->
+<!-- ============================== -->
+<div class="section-divider">
+  <span class="divider-num">IV</span>
+  <div class="divider-content reveal" style="text-align: center;">
+    <h3 class="divider-title">Heart Rate Monitoring</h3>
+    <p class="divider-sub">Any standard BLE monitor, zero brand lock-in</p>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SECTION 4: HR MONITORING       -->
+<!-- ============================== -->
+<section class="section" id="heart-rate" style="border-top: none;">
+  <div class="container">
+    <div class="section-split reverse">
+      <div class="phone reveal">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ph-status"><span>9:41</span><span style="opacity:0.6;font-size:10px;">••••</span></div>
+            <!-- Header -->
+            <div style="padding:8px 16px 4px;text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5" style="margin-bottom:4px;"><path d="M6.5 6.5a4 4 0 0 1 5.5-1l.5.5.5-.5a4 4 0 0 1 5.5 1 4.2 4.2 0 0 1 0 5.9L12 19l-6.5-6.6a4.2 4.2 0 0 1 0-5.9z" fill="rgba(59,130,246,0.15)"/></svg>
+              <div style="font-size:13px;font-weight:700;color:#fff;">Heart Rate Monitor</div>
+            </div>
+            <!-- Connected badge -->
+            <div style="text-align:center;margin:8px 0;">
+              <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);font-size:8px;font-weight:700;color:#22c55e;letter-spacing:1px;">CONNECTED</span>
+            </div>
+            <div style="text-align:center;font-size:10px;color:#888;margin-bottom:10px;">Polar H10</div>
+            <!-- BPM Hero -->
+            <div style="text-align:center;padding:12px 0 8px;">
+              <div style="display:inline-block;width:90px;height:90px;border-radius:50%;background:rgba(239,68,68,0.08);border:2px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+                <div>
+                  <div style="font-size:8px;color:#ef4444;margin-bottom:2px;">♥</div>
+                  <div style="font-size:32px;font-weight:200;color:#fff;line-height:1;">142</div>
+                  <div style="font-size:8px;color:#888;font-weight:500;">BPM</div>
+                </div>
+              </div>
+            </div>
+            <!-- Zone badge -->
+            <div style="text-align:center;margin:6px 0;">
+              <span style="display:inline-block;padding:4px 14px;border-radius:20px;background:rgba(249,115,22,0.15);font-size:8px;font-weight:600;color:#f97316;">Cardio Zone</span>
+            </div>
+            <!-- Battery -->
+            <div style="text-align:center;margin:8px 0;">
+              <span style="font-size:9px;color:#555;">🔋 Battery: 85%</span>
+            </div>
+            <!-- Buttons -->
+            <div style="display:flex;gap:6px;padding:8px 12px 0;">
+              <div style="flex:1;background:#22c55e;border-radius:10px;padding:8px 0;text-align:center;">
+                <span style="font-size:10px;font-weight:700;color:#fff;">Done</span>
+              </div>
+              <div style="flex:1;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:8px 0;text-align:center;">
+                <span style="font-size:10px;font-weight:600;color:#ef4444;">Disconnect</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal">Hardware Integration</p>
+        <h2 class="section-title reveal d1">Real-Time Heart Rate</h2>
+        <p class="section-desc reveal d2">Connect any Bluetooth heart rate monitor for live tracking during workouts. Your heart rate data powers calorie calculations, intensity scoring, and ghost comparisons.</p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="glass-card reveal">
+        <div class="feature-card-title">Any BLE Monitor</div>
+        <p class="feature-card-text">Works with any Bluetooth heart rate monitor that broadcasts the standard Heart Rate Service&mdash;Polar, Wahoo, Garmin, Coospo, and more.</p>
+      </div>
+      <div class="glass-card reveal d1">
+        <div class="feature-card-title">Background Capture</div>
+        <p class="feature-card-text">Heart rate keeps recording when you lock your phone or switch apps. A native foreground service maintains the BLE connection so you never miss a beat.</p>
+      </div>
+      <div class="glass-card reveal d2">
+        <div class="feature-card-title">Live HR Chart</div>
+        <p class="feature-card-text">A real-time heart rate chart scrolls during your workout, showing your current BPM alongside your ghost's heart rate for visual comparison.</p>
+      </div>
+      <div class="glass-card reveal d3">
+        <div class="feature-card-title">Accurate Calories</div>
+        <p class="feature-card-text">With a connected HR monitor, calories use the Keytel (2005) formula&mdash;factoring heart rate, age, sex, and weight for research-backed accuracy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- DIVIDER                        -->
+<!-- ============================== -->
+<div class="section-divider">
+  <span class="divider-num">V</span>
+  <div class="divider-content reveal" style="text-align: center;">
+    <h3 class="divider-title">Workout Tracking</h3>
+    <p class="divider-sub">From first rep to weekly recap</p>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SECTION 5: WORKOUT TRACKING    -->
+<!-- ============================== -->
+<section class="section" id="workouts" style="border-top: none;">
+  <div class="container">
+    <div class="section-split">
+      <div>
+        <p class="section-label reveal">Core Feature</p>
+        <h2 class="section-title reveal d1">Track Everything</h2>
+        <p class="section-desc reveal d2">Create custom workouts, log every set in real time, and track cardio with distance, pace, and calories. Everything builds toward your weekly goals.</p>
+      </div>
+      <div class="phone reveal d3">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ph-status"><span>9:41</span><span style="opacity:0.6;font-size:10px;">••••</span></div>
+            <!-- Header -->
+            <div style="padding:6px 16px 2px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:13px;font-weight:700;color:#fff;">Upper Body Push</div>
+                <div style="font-size:8px;color:#7c3aed;background:rgba(124,58,237,0.15);padding:3px 8px;border-radius:4px;font-weight:600;">Strength</div>
+              </div>
+              <div style="font-size:22px;font-weight:200;color:#fff;letter-spacing:-1px;">18:32</div>
+            </div>
+            <!-- Current Exercise -->
+            <div class="ph-card">
+              <div style="padding:8px 10px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                  <span style="font-size:11px;font-weight:700;color:#fff;">Bench Press</span>
+                  <span style="font-size:8px;color:#555;">Set 3 of 4</span>
+                </div>
+                <!-- Completed sets -->
+                <div class="ph-row" style="padding:4px 0;">
+                  <span style="font-size:8px;color:#22c55e;">✓ Set 1</span>
+                  <span style="font-size:8px;color:rgba(255,255,255,0.5);">80kg × 10</span>
+                </div>
+                <div class="ph-row" style="padding:4px 0;">
+                  <span style="font-size:8px;color:#22c55e;">✓ Set 2</span>
+                  <span style="font-size:8px;color:rgba(255,255,255,0.5);">85kg × 8</span>
+                </div>
+                <div class="ph-row" style="padding:4px 0;border-bottom:none;">
+                  <span style="font-size:8px;color:#22c55e;">✓ Set 3</span>
+                  <span style="font-size:8px;color:rgba(255,255,255,0.5);">85kg × 7</span>
+                </div>
+                <!-- Rest timer -->
+                <div style="text-align:center;padding:6px 0 2px;">
+                  <span style="font-size:8px;color:#555;">Rest: 1:32</span>
+                </div>
+                <!-- Start Set button -->
+                <div style="background:#22c55e;border-radius:8px;padding:7px 0;text-align:center;margin-top:4px;">
+                  <span style="font-size:10px;font-weight:700;color:#fff;">START SET</span>
+                </div>
+              </div>
+            </div>
+            <!-- Next exercise preview -->
+            <div class="ph-card">
+              <div style="padding:8px 10px;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:7px;color:#555;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Next</div>
+                  <div style="font-size:10px;font-weight:500;color:#fff;">Incline DB Press</div>
+                </div>
+                <span style="font-size:8px;color:#555;">3 sets</span>
+              </div>
+            </div>
+            <!-- Finish button -->
+            <div style="padding:8px 10px 0;">
+              <div style="border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:7px 0;text-align:center;">
+                <span style="font-size:10px;font-weight:600;color:#22c55e;">Finish Workout</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="glass-card reveal">
+        <div class="feature-card-title">Custom Workouts</div>
+        <p class="feature-card-text">Build workouts from a library of 200+ exercises across strength, cardio, and mixed categories. Set target sets, reps, and weights for each exercise.</p>
+      </div>
+      <div class="glass-card reveal d1">
+        <div class="feature-card-title">Live Set Logging</div>
+        <p class="feature-card-text">One-tap set tracking: Start Set, perform your reps, End Set. Adjust reps and weight inline. Rest time is auto-calculated between sets.</p>
+      </div>
+      <div class="glass-card reveal d2">
+        <div class="feature-card-title">Cardio &amp; GPS</div>
+        <p class="feature-card-text">Log cardio with duration, distance, and calories. Enable GPS for outdoor activities like running and cycling to capture route, pace, and distance.</p>
+      </div>
+      <div class="glass-card reveal d3">
+        <div class="feature-card-title">Progress Analytics</div>
+        <ul class="feature-card-list">
+          <li>Muscle heatmap with volume distribution and recovery</li>
+          <li>Body composition charts via Health Connect</li>
+          <li>Weekly trends for calories, active minutes, workouts</li>
+          <li>Fitness Score history showing weekly progression</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SECTION 6: PRIVACY             -->
+<!-- ============================== -->
+<section class="section" id="data">
+  <div class="container">
+    <div class="section-split reverse">
+      <div class="phone reveal">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ph-status"><span>9:41</span><span style="opacity:0.6;font-size:10px;">••••</span></div>
+            <!-- Header -->
+            <div style="padding:8px 16px 6px;display:flex;align-items:center;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+              <span style="font-size:14px;font-weight:700;color:#fff;">Settings</span>
+            </div>
+            <!-- Section label -->
+            <div style="padding:6px 16px 4px;">
+              <span style="font-size:8px;font-weight:700;color:#555;letter-spacing:1px;text-transform:uppercase;">Data &amp; Privacy</span>
+            </div>
+            <!-- Local storage highlight -->
+            <div class="ph-card">
+              <div style="padding:10px;text-align:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div style="font-size:10px;font-weight:600;color:#fff;margin-bottom:2px;">All Data Stored On Device</div>
+                <div style="font-size:8px;color:#555;line-height:1.4;">Workouts, heart rate, GPS, and scores never leave your phone.</div>
+              </div>
+            </div>
+            <!-- Settings rows -->
+            <div class="ph-card">
+              <div class="ph-row" style="padding:9px 10px;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:11px;">📥</span>
+                  <span style="font-size:10px;font-weight:500;color:#fff;">Download My Data</span>
+                </div>
+                <span style="font-size:10px;color:#444;">›</span>
+              </div>
+              <div class="ph-row" style="padding:9px 10px;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:11px;">📤</span>
+                  <span style="font-size:10px;font-weight:500;color:#fff;">Restore From Backup</span>
+                </div>
+                <span style="font-size:10px;color:#444;">›</span>
+              </div>
+              <div class="ph-row" style="padding:9px 10px;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:11px;">🔄</span>
+                  <span style="font-size:10px;font-weight:500;color:#fff;">Auto-Backup</span>
+                </div>
+                <div style="width:28px;height:16px;background:#22c55e;border-radius:8px;position:relative;">
+                  <div style="width:12px;height:12px;background:#fff;border-radius:50%;position:absolute;top:2px;right:2px;"></div>
+                </div>
+              </div>
+              <div class="ph-row" style="padding:9px 10px;border-bottom:none;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:11px;">🗑️</span>
+                  <span style="font-size:10px;font-weight:500;color:#ef4444;">Delete Account</span>
+                </div>
+                <span style="font-size:10px;color:#444;">›</span>
+              </div>
+            </div>
+            <!-- Social note -->
+            <div class="ph-card">
+              <div style="padding:8px 10px;display:flex;align-items:flex-start;gap:6px;">
+                <span style="font-size:11px;">🔒</span>
+                <div style="font-size:8px;color:#888;line-height:1.5;">Social features are opt-in. Only workout summaries are shared with accepted friends&mdash;never raw heart rate or GPS data.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal">Your Data</p>
+        <h2 class="section-title reveal d1">Privacy First</h2>
+        <p class="section-desc reveal d2">Your workout data lives on your device. No ads, no data sales, no uploads unless you choose to share.</p>
+      </div>
+    </div>
+
+    <div class="privacy-grid">
+      <div class="glass-card reveal">
+        <div class="feature-card-title">Local Storage</div>
+        <p class="feature-card-text">Workouts, heart rate, GPS tracks, scores, and body composition are stored in an on-device database. Nothing leaves your phone unless you choose to share or export it.</p>
+      </div>
+      <div class="glass-card reveal d1">
+        <div class="feature-card-title">Backup &amp; Restore</div>
+        <p class="feature-card-text">Manual and automatic backups save your entire database as a JSON file. Restore from any backup to recover your data on a new device.</p>
+      </div>
+      <div class="glass-card reveal d2">
+        <div class="feature-card-title">Optional Social</div>
+        <p class="feature-card-text">Social features are opt-in. Sign in with a magic link to add friends, share workouts, and challenge each other. Only workout summaries are shared&mdash;never raw heart rate or GPS data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="page-footer">
+  <img src="images/ryval-logo.png" alt="Ryval" class="footer-logo">
+  <p class="footer-text">&copy; 2026 Ryval. All rights reserved.</p>
+</footer>
+
+<!-- Scroll reveal observer -->
+<script>
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!window.IntersectionObserver) {
+    els.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+</script>
 
 </body>
 </html>
