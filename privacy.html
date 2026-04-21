@@ -30,7 +30,7 @@
   <main class="legal-page">
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p class="legal-date">Effective date: March 5, 2026</p>
+      <p class="legal-date">Effective date: April 21, 2026</p>
 
       <p>Ryval ("the App") is a personal fitness tracking application. This policy explains what data the App collects, how it is stored, and your choices regarding that data.</p>
 
@@ -47,7 +47,8 @@
       <h3>Data Collected Automatically</h3>
       <ul>
         <li>Heart rate data: if you connect a Bluetooth heart rate monitor (e.g., Polar, Wahoo, Garmin, Coospo), the App records real-time heart rate and energy expenditure during workouts. This data is stored locally on your device.</li>
-        <li>Body composition data: if you connect to Android Health Connect, the App reads weight, body fat percentage, height, lean body mass, and bone mass from Health Connect. This data is stored locally on your device.</li>
+        <li>Body composition data: if you connect to Apple Health on iOS or Android Health Connect on Android, the App reads body measurements such as weight, body fat percentage, and height. On Android, lean body mass and bone mass may also be read when available. This data is stored locally on your device.</li>
+        <li>Imported workout data: if you choose to import workouts from Apple Health, the App reads workout summaries and related heart-rate samples for those workouts. Imported workout data is stored locally on your device and is not used for advertising.</li>
         <li>GPS and location data: if you enable GPS tracking for outdoor workouts (e.g., running, cycling), the App records location coordinates, distance, and pace during the workout session. GPS data is stored locally on your device and is not transmitted to any external server. Location access is only used during active workout sessions with GPS enabled.</li>
       </ul>
 
@@ -58,19 +59,20 @@
         <li>Firebase Cloud Firestore: if you use social features (friend codes, friend requests, workout sharing, challenges), social relationship data and shared workout metadata are stored in Firestore. Only accepted friends can view your shared data.</li>
         <li>Firebase Remote Config: the App uses Firebase Remote Config to manage feature availability. No personal data is sent to Remote Config; the App receives configuration flags only.</li>
         <li>OneSignal Push Notifications: if you opt in to push notifications, OneSignal receives a device identifier to deliver notifications. No personal data is shared with OneSignal beyond what is necessary to deliver push messages.</li>
+        <li>Fitbit: if Fitbit sync is available in your build and you choose to connect Fitbit, the App may read recent workout summaries and heart-rate data from Fitbit. Fitbit access is optional and can be disconnected from Settings.</li>
       </ul>
 
       <h2>How Data Is Stored</h2>
 
       <h3>Local Storage</h3>
-      <p>The majority of your data — workouts, heart rate logs, GPS tracks, body composition records, fitness scores, goals, and preferences — is stored locally on your device in an SQLite database. This data does not leave your device unless you explicitly export it or share workouts with friends.</p>
+      <p>The majority of your data — workouts, heart rate logs, GPS tracks, imported Apple Health/Fitbit summaries, body composition records, fitness scores, goals, and preferences — is stored locally on your device in an SQLite database. This data does not leave your device unless you explicitly export it or share workouts with friends.</p>
 
       <h3>Cloud Services</h3>
       <ul>
         <li>Firebase: stores your anonymous user ID, friend codes, friend list, and shared workout metadata for social features. If you sign in with email, Firebase stores your email address. If you add a profile photo, it is stored in Firebase Cloud Storage.</li>
         <li>OneSignal: stores a push notification device token if you opt in to notifications.</li>
       </ul>
-      <p>The App does not upload your full workout data, heart rate data, GPS tracks, or body composition data to any cloud server. Social features share only workout summary metadata (workout name, date, duration, calories) with accepted friends — not raw heart rate or GPS data.</p>
+      <p>The App does not upload your full workout data, heart rate data, GPS tracks, imported health data, or body composition data to any cloud server. Social features share only workout summary metadata (workout name, date, duration, calories) with accepted friends — not raw heart rate, GPS data, or body measurements.</p>
 
       <h2>Bluetooth and Sensor Data</h2>
       <p>When you connect a Bluetooth heart rate monitor:</p>
@@ -91,7 +93,16 @@
         <li>GPS tracking is optional and only active during workouts where you explicitly enable it.</li>
       </ul>
 
-      <h2>Health Connect Integration</h2>
+      <h2>Apple Health and Health Connect Integrations</h2>
+      <p>When you connect to Apple Health on iOS:</p>
+      <ul>
+        <li>The App requests read-only access to body mass, body fat percentage, height, workouts, and workout heart-rate samples.</li>
+        <li>Data is read from Apple Health and stored locally in the App's database for Progress views and optional workout import.</li>
+        <li>The App does not write data to Apple Health.</li>
+        <li>Apple Health data is not used for advertising, marketing, or data mining, and is not sold or shared with third parties.</li>
+        <li>You can revoke Apple Health permissions at any time from iOS Settings.</li>
+      </ul>
+
       <p>When you connect to Android Health Connect:</p>
       <ul>
         <li>The App requests read-only access to weight, body fat, height, lean body mass, and bone mass records.</li>
@@ -100,8 +111,11 @@
         <li>You can revoke Health Connect permissions at any time from Android Settings or from the App's Settings screen.</li>
       </ul>
 
+      <h2>Fitbit Integration</h2>
+      <p>If Fitbit sync is available and you choose to connect it, Ryval may read recent Fitbit workout summaries and heart-rate data for local workout history import and validation. Fitbit data is stored locally, protected by duplicate detection, and is not used for live workout tracking, advertising, or marketing. You can disconnect Fitbit from Settings.</p>
+
       <h2>Fitness Score and Personalization</h2>
-      <p>The App calculates a Fitness Score (0-1000) based on your workout activity. The score uses your profile information (birth year, sex, weekly training frequency) to personalize targets and thresholds. This calculation happens entirely on your device — no personal data is sent to any server for scoring purposes.</p>
+      <p>The App calculates a Fitness Score (0-1000) based on your workout activity. The score uses your profile information (birth year, sex, weekly training frequency) and locally stored workout/body-metric data to personalize targets and thresholds. This calculation happens entirely on your device — no personal data is sent to any server for scoring purposes.</p>
 
       <h2>Data Export and Deletion</h2>
       <ul>
@@ -112,7 +126,7 @@
       </ul>
 
       <h2>Data Sharing</h2>
-      <p>We do not sell, rent, or share your personal data with third parties for advertising or marketing purposes. The App does not display advertisements.</p>
+      <p>We do not sell, rent, or share your personal data with third parties for advertising or marketing purposes. Health and fitness data is never used for advertising or marketing. The App does not display advertisements.</p>
       <p>Data is shared with third-party services only as described above (Firebase for authentication and social features, OneSignal for push notifications) and only to the extent necessary to provide those features.</p>
       <p>If you use social features, workout summary information (workout name, date, duration, calories) may be visible to your accepted friends within the App.</p>
 
@@ -124,7 +138,7 @@
 
       <h2>Contact</h2>
       <p>If you have questions about this Privacy Policy or your data, please contact us at:</p>
-      <p>Email: <a href="mailto:contact.builtbylee@gmail.com">contact.builtbylee@gmail.com</a></p>
+      <p>Email: <a href="mailto:support@ryvalapp.com">support@ryvalapp.com</a></p>
 
       <p class="legal-copyright">&copy; 2026 Ryval. All rights reserved.</p>
     </div>
