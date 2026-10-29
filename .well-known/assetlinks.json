@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hackneymanlee2.ryval",
+      "sha256_cert_fingerprints": [
+        "E7:90:83:7C:09:BA:DC:CF:64:56:10:EB:B3:19:D6:A2:4D:FF:B8:AE:63:B7:D2:08:E3:73:D7:DB:1F:49:9E:39",
+        "5D:56:B6:B0:35:D4:C3:D8:66:9A:C5:09:6C:60:33:FD:7E:C8:C0:0F:56:FE:58:54:6A:9A:76:AE:3C:61:2A:F9"
+      ]
+    }
+  }
+]
